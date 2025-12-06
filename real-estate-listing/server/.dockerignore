@@ -1,0 +1,13 @@
+/Include
+/Lib
+/Scripts
+/var
+pyvenv.cfg
+realtors-254.json
+__pycache__
+myDB.db
+main.py
+data.json
+data1.json
+data2.json
+README.md

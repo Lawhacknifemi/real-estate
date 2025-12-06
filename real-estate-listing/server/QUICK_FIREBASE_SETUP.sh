@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Quick Firebase Admin SDK Setup Script
+# This script helps you set up Firebase Admin SDK credentials for the backend
+
+echo "🔥 Firebase Admin SDK Backend Setup"
+echo "===================================="
+echo ""
+echo "To set up Firebase Admin SDK, you need to:"
+echo ""
+echo "1. Go to Firebase Console: https://console.firebase.google.com/"
+echo "2. Select your project: real-estate-5eb1f"
+echo "3. Click ⚙️ (gear icon) → Project settings"
+echo "4. Go to 'Service accounts' tab"
+echo "5. Click 'Generate new private key'"
+echo "6. A JSON file will download"
+echo ""
+echo "Once you have the JSON file, you can either:"
+echo ""
+echo "OPTION A: Set environment variables manually"
+echo "--------------------------------------------"
+echo "Extract values from the JSON and run these commands:"
+echo ""
+echo "export type=\"service_account\""
+echo "export project_id=\"real-estate-5eb1f\""
+echo "export private_key_id=\"<from_json>\""
+echo "export private_key=\"<from_json>\""
+echo "export client_email=\"<from_json>\""
+echo "export client_id=\"<from_json>\""
+echo "export auth_uri=\"https://accounts.google.com/o/oauth2/auth\""
+echo "export token_uri=\"https://oauth2.googleapis.com/token\""
+echo "export auth_provider_x509_cert_url=\"https://www.googleapis.com/oauth2/v1/certs\""
+echo "export client_x509_cert_url=\"<from_json>\""
+echo "export universe_domain=\"googleapis.com\""
+echo "export BUCKET=\"real-estate-5eb1f.appspot.com\""
+echo ""
+echo "OPTION B: Use the JSON file directly (easier)"
+echo "---------------------------------------------"
+echo "1. Save the downloaded JSON file as: firebase-service-account.json"
+echo "2. Place it in: real-estate-listing/server/"
+echo "3. The app will auto-load it (if we update the code)"
+echo ""
+echo "After setting up, restart your Flask server:"
+echo "  python run.py"
+echo ""
+
+
+
