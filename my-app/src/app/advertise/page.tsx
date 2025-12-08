@@ -3,6 +3,7 @@
 import PageLayout from '@/components/PageLayout';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { registerVendor } from '@/lib/api';
 

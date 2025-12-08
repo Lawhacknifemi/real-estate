@@ -41,17 +41,11 @@ const properties = [
   },
 ];
 
-interface RouteContext {
-  params: {
-    id: string;
-  };
-}
-
 export async function GET(
   request: NextRequest,
-  context: RouteContext
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = context.params;
+  const { id } = await context.params;
   const property = properties.find((p) => p.id === id);
 
   if (!property) {

@@ -1,5 +1,7 @@
 // API configuration and utilities for connecting to Flask backend
 
+import { Property } from '@/types/property';
+
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:5001';
 
 // Backend property structure (from Flask API)
@@ -38,19 +40,8 @@ function logBackendProperty(backendProp: BackendProperty) {
   });
 }
 
-// Frontend property structure
-export interface Property {
-  id: string;
-  title: string;
-  location: string;
-  price: number;
-  acreage?: number;
-  unitCount?: number;
-  type: 'Traditional Site' | 'Other';
-  listingType: 'Sale' | 'Lease';
-  image: string;
-  description?: string;
-}
+// Re-export Property type for convenience
+export type { Property } from '@/types/property';
 
 // Transform backend property to frontend format
 function transformProperty(backendProp: BackendProperty): Property {
@@ -90,14 +81,14 @@ function transformProperty(backendProp: BackendProperty): Property {
     }
   }
 
-  const transformed = {
+  const transformed: Property = {
     id: backendProp.id,
     title: backendProp.address || backendProp.location || 'Property',
     location: backendProp.location,
     price: backendProp.price,
     acreage: acreage,
     unitCount: backendProp.bedrooms > 0 ? backendProp.bedrooms : undefined, // Backend uses bedrooms field for unit count
-    type: backendProp.category === 'Traditional Site' ? 'Traditional Site' : 'Other',
+    type: (backendProp.category === 'Traditional Site' ? 'Traditional Site' : 'Other') as 'Traditional Site' | 'Other',
     listingType: listingType,
     image: image,
     description: backendProp.description,
