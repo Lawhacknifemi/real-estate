@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 
@@ -20,13 +19,10 @@ export default function Header() {
   return (
     <header className="bg-white shadow-sm">
       {/* Top bar */}
-      <div className="border-b border-gray-200 py-2">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 text-sm">
-            <div className="text-gray-700">
-              Sales/Support: <a href="tel:313-484-4670" className="text-blue-600 hover:underline">313-484-4670</a>
-            </div>
-            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 w-full lg:w-auto">
+        <div className="border-b border-gray-200 py-2">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 text-sm">
+              <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 w-full lg:w-auto">
               <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
                 <span className="text-xs lg:text-sm">We defaulted to the {selectedRegion} based on your region. You can change your regions</span>
                 <div className="flex gap-2">
@@ -130,23 +126,14 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Logo and main header */}
-      <div className="container mx-auto px-4 py-0">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center overflow-hidden">
-            <div className="overflow-hidden -my-8">
-              <Image
-                src="/lisftflexspacelogo.png"
-                alt="LIST FLEX SPACE"
-                width={600}
-                height={180}
-                className="h-auto w-auto max-h-[180px] object-contain"
-                priority
-              />
-            </div>
-          </Link>
+        {/* Logo and main header */}
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between">
+              <Link href="/" className="flex items-center gap-4">
+                <img src="/logo.jpeg" alt="List Flex Space" className="h-16 w-auto object-cover font-bold" style={{ objectPosition: 'center', transform: 'scale(1.2)' }} />
+              </Link>
+          </div>
         </div>
-      </div>
 
       {/* Navigation */}
       <nav className="border-t border-gray-200">

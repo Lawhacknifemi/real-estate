@@ -88,20 +88,6 @@ export default function AboutPage() {
             <p className="text-lg text-gray-700 mb-8">
               Have questions or want to learn more? We&apos;d love to hear from you.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Sales & Support</h3>
-                <p className="text-gray-600 mb-4">Need help with your listing or have questions?</p>
-                <a href="tel:313-484-4670" className="text-blue-600 hover:text-blue-700 font-medium text-lg">
-                  313-484-4670
-                </a>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-lg">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Business Hours</h3>
-                <p className="text-gray-600 mb-2">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                <p className="text-gray-600">Saturday: 10:00 AM - 4:00 PM</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

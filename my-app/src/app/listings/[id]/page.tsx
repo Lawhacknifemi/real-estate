@@ -43,11 +43,10 @@ export default function ListingDetailPage({ params }: ListingDetailPageProps) {
   useEffect(() => {
     if (!propertyId) return;
     
-    const id = propertyId; // Capture value for TypeScript type narrowing
     async function fetchProperty() {
       try {
-        console.log('[PROPERTY-DETAIL] Fetching property with ID:', id);
-        const data = await getPropertyById(id);
+        console.log('[PROPERTY-DETAIL] Fetching property with ID:', propertyId);
+        const data = await getPropertyById(propertyId);
         console.log('[PROPERTY-DETAIL] Received data:', data);
         if (data) {
           console.log('[PROPERTY-DETAIL] Property details:', {
@@ -58,7 +57,7 @@ export default function ListingDetailPage({ params }: ListingDetailPageProps) {
             type: data.type
           });
         } else {
-          console.warn('[PROPERTY-DETAIL] Property not found for ID:', id);
+          console.warn('[PROPERTY-DETAIL] Property not found for ID:', propertyId);
         }
         setProperty(data);
       } catch (error) {
