@@ -142,6 +142,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUserProfile(profile);
     localStorage.setItem('userProfile', JSON.stringify(profile));
     
+    // Notify admin via HubSpot
+    try {
+      await fetch('/api/notify-admin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: profile.email,
+          displayName: profile.displayName,
+          role: profile.role
+        })
+      });
+    } catch (error) {
+      console.error('Failed to notify admin:', error);
+    }
+    
     // Update display name if provided
     if (displayName && userCredential.user) {
       // Note: updateProfile requires additional setup, skipping for now
