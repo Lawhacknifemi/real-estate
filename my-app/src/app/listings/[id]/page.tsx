@@ -44,9 +44,12 @@ export default function ListingDetailPage({ params }: ListingDetailPageProps) {
     if (!propertyId) return;
     
     async function fetchProperty() {
+      const id = propertyId; // Store in local variable for type narrowing
+      if (!id) return;
+      
       try {
-        console.log('[PROPERTY-DETAIL] Fetching property with ID:', propertyId);
-        const data = await getPropertyById(propertyId);
+        console.log('[PROPERTY-DETAIL] Fetching property with ID:', id);
+        const data = await getPropertyById(id);
         console.log('[PROPERTY-DETAIL] Received data:', data);
         if (data) {
           console.log('[PROPERTY-DETAIL] Property details:', {
@@ -57,7 +60,7 @@ export default function ListingDetailPage({ params }: ListingDetailPageProps) {
             type: data.type
           });
         } else {
-          console.warn('[PROPERTY-DETAIL] Property not found for ID:', propertyId);
+          console.warn('[PROPERTY-DETAIL] Property not found for ID:', id);
         }
         setProperty(data);
       } catch (error) {

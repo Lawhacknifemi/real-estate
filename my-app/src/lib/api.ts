@@ -90,6 +90,9 @@ function transformProperty(backendProp: BackendProperty): Property {
     }
   }
 
+  // Determine type with explicit type assertion
+  const propertyType: 'Traditional Site' | 'Other' = backendProp.category === 'Traditional Site' ? 'Traditional Site' : 'Other';
+  
   const transformed = {
     id: backendProp.id,
     title: backendProp.address || backendProp.location || 'Property',
@@ -97,7 +100,7 @@ function transformProperty(backendProp: BackendProperty): Property {
     price: backendProp.price,
     acreage: acreage,
     unitCount: backendProp.bedrooms > 0 ? backendProp.bedrooms : undefined, // Backend uses bedrooms field for unit count
-    type: backendProp.category === 'Traditional Site' ? 'Traditional Site' : 'Other',
+    type: propertyType,
     listingType: listingType,
     image: image,
     description: backendProp.description,
@@ -105,6 +108,11 @@ function transformProperty(backendProp: BackendProperty): Property {
     owner_id: backendProp.owner_id, // Include owner ID for ownership checks
     active: backendProp.active !== undefined ? backendProp.active : true, // Include active status
     realtor: backendProp.realtor, // Include realtor contact information
+  } as Property & {
+    property_images: string[];
+    owner_id: string;
+    active: boolean;
+    realtor?: any;
   };
   
   console.log('[TRANSFORM] Final transformed property:', {

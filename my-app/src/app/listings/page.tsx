@@ -4,11 +4,11 @@ import PageLayout from '@/components/PageLayout';
 import PropertyCard from '@/components/PropertyCard';
 import { Property } from '@/types/property';
 import Link from 'next/link';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { getAllProperties, searchProperties } from '@/lib/api';
 
-export default function ListingsPage() {
+function ListingsContent() {
   const searchParams = useSearchParams();
   const [allProperties, setAllProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
@@ -221,5 +221,19 @@ export default function ListingsPage() {
         </div>
       </section>
     </PageLayout>
+  );
+}
+
+export default function ListingsPage() {
+  return (
+    <Suspense fallback={
+      <PageLayout>
+        <div className="text-center py-16">
+          <p className="text-gray-600 text-lg">Loading...</p>
+        </div>
+      </PageLayout>
+    }>
+      <ListingsContent />
+    </Suspense>
   );
 }
